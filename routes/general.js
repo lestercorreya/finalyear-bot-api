@@ -4,7 +4,7 @@ const Trip = require("../models/trip")
 const bestRoute = require("../functions/bestRoute")
 
 router.get("/nextDestination",(req,res)=>{
-    Trip.deleteOne()
+    Trip.findOneAndRemove()
     .then((result)=>res.send(result))
     .catch((err)=>console.log(err))
 })
