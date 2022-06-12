@@ -3,7 +3,7 @@ const router = express.Router();
 const Trip = require("../models/trip")
 const bestRoute = require("../functions/bestRoute")
 
-router.get("/nextTrip",(req,res)=>{
+router.get("/nextDestination",(req,res)=>{
     Trip.findOne()
     .then((result)=>res.send(result))
     .catch((err)=>console.log(err))
@@ -26,31 +26,31 @@ router.get("/g",(req,res)=> {
     res.send("sssupppp di patti")
 })
 
-router.get("/",(req,res)=>{
-    const trip = new Trip({
-        destination:"warehouse 1",
-        routes:[
-            {
-                S:3,
-                L:false,
-                R:false
-            },
-            {
-                S:3,
-                L:false,
-                R:true
-            },
-            {
-                S:3,
-                L:true,
-                R:false
-            },
-        ]
-    })
+// router.get("/",(req,res)=>{
+//     const trip = new Trip({
+//         destination:"warehouse 1",
+//         routes:[
+//             {
+//                 S:3,
+//                 L:false,
+//                 R:false
+//             },
+//             {
+//                 S:3,
+//                 L:false,
+//                 R:true
+//             },
+//             {
+//                 S:3,
+//                 L:true,
+//                 R:false
+//             },
+//         ]
+//     })
 
-    trip.save()
-        .then((result)=>res.send(result))
-        .catch((err)=>console.log(err))
-})
+//     trip.save()
+//         .then((result)=>res.send(result))
+//         .catch((err)=>console.log(err))
+// })
 
 module.exports = router;

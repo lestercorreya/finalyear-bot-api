@@ -6,20 +6,10 @@ const tripSchema = new Schema({
         type:String,
         required:true
     },
-    routes:[{
-        S:{
-            type:Number,
-            required:true
-        },
-        L:{
-            type:Boolean,
-            required:true
-        },
-        R:{
-            type:Boolean,
-            required:true
-        }
-    }]
+    coordinates:{
+        type:String,
+        required:true
+    }
 })
 
 const Trip = mongoose.model('Trip',tripSchema);
