@@ -18,6 +18,14 @@ router.post("/findRoute",(req,res)=>{
     res.send({"routes":route})
 })
 
+router.get("/n",(req,res)=> {
+    res.send("ssssuppppp babeeeeee")
+})
+
+router.get("/g",(req,res)=> {
+    res.send("sssupppp di patti")
+})
+
 router.get("/",(req,res)=>{
     const trip = new Trip({
         destination:"warehouse 1",
