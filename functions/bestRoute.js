@@ -54,15 +54,15 @@ function bestRoute(source,destination) {
     for (i=1;i<main.length;i++) {
         if (curr_pos[0] === main[i][0]) {
             if (curr_pos[1]<main[i][1]) {
-                required_ori = "u"
-            } else {
-                required_ori = "d"
-            }
-        } else {
-            if (curr_pos[0] < main[i][0]) {
                 required_ori = "r"
             } else {
                 required_ori = "l"
+            }
+        } else {
+            if (curr_pos[0] < main[i][0]) {
+                required_ori = "u"
+            } else {
+                required_ori = "d"
             }
         }
 
