@@ -33,8 +33,45 @@ function minDist(s,d,vist) {
 
 function bestRoute(source,destination) {
     minDist(source,destination,[])
+
+    let returnable = []
+    const mappings = {
+        "rd":"r",
+        "ru":"l",
+        "rr":"s",
+        "ld":"l",
+        "ll":"s",
+        "lu":"r",
+        "ur":"r",
+        "ul":"l",
+        "uu":"s"
+    }
+
+    let curr_ori = "u"
+    let curr_pos = source
+    let required_ori = "u"
+
+    for (i=1;i<main.length;i++) {
+        if (curr_pos[0] === main[i][0]) {
+            if (curr_pos[1]<main[i][1]) {
+                required_ori = "u"
+            } else {
+                required_ori = "d"
+            }
+        } else {
+            if (curr_pos[0] < main[i][0]) {
+                required_ori = "r"
+            } else {
+                required_ori = "l"
+            }
+        }
+
+        returnable.push(mappings[curr_ori+required_ori])
+        curr_ori = required_ori
+        curr_pos = main[i]
+    }
     
-    return main.map((val)=>val.toString())
+    return returnable
 }
 
 module.exports = bestRoute
