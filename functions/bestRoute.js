@@ -1,5 +1,6 @@
 let main = []
 let leng = 100000
+let obstacles = []
 
 function minDist(s,d,vist) {
     if (s[0] === d[0] && s[1] === d[1]) {
@@ -23,6 +24,8 @@ function minDist(s,d,vist) {
     arr.forEach((i)=>{
         if (vist.every((val)=>{
             return val[0] !== i[0] || val[1] !== i[1]
+        }) && obstacles.every((val)=>{
+            return val[0] !== i[0] || val[1] !== i[1]
         })) {
             vist_copy = [...vist]
             vist_copy.push(i)
@@ -32,7 +35,7 @@ function minDist(s,d,vist) {
 }
 
 function bestRoute(source,destination) {
-    minDist(source,destination,[])
+    minDist(source,destination,[source])
 
     let returnable = []
     const mappings = {
@@ -74,4 +77,4 @@ function bestRoute(source,destination) {
     return returnable
 }
 
-module.exports = bestRoute
+module.exports = {bestRoute,obstacles}
