@@ -1,8 +1,7 @@
 let main = []
 let leng = 100000
-let obstacles = []
 
-function minDist(s,d,vist) {
+const minDist = (s,d,vist,obstacles)=> {
     if (s[0] === d[0] && s[1] === d[1]) {
         if (vist.length < leng) {
             main = [...vist]
@@ -29,13 +28,15 @@ function minDist(s,d,vist) {
         })) {
             vist_copy = [...vist]
             vist_copy.push(i)
-            minDist(i,d,vist_copy)
+            minDist(i,d,vist_copy,obstacles)
         }
     }) 
 }
 
-function bestRoute(source,destination) {
-    minDist(source,destination,[source])
+const bestRoute = (source,destination,obstacles) => {
+    main = []
+    leng = 1000000
+    minDist(source,destination,[source],obstacles)
 
     let returnable = []
     const mappings = {
@@ -77,4 +78,4 @@ function bestRoute(source,destination) {
     return returnable
 }
 
-module.exports = {bestRoute,obstacles}
+module.exports = bestRoute

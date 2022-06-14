@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Trip = require("../models/trip")
-const {bestRoute,obstacles} = require("../functions/bestRoute")
+const Layout = require("../models/layout")
+const bestRoute = require("../functions/bestRoute")
 
 router.get("/nextDestination",(req,res)=>{
     Trip.findOneAndRemove()
@@ -13,9 +14,12 @@ router.post("/findRoute",(req,res)=>{
     const source = req.body.source
     const destination = req.body.destination
 
-    const route = bestRoute(source,destination)
-
-    res.send({"route":route})
+    Layout.findOne()
+    .then((result)=>{
+        const route = bestRoute(source,destination,result.obstacles)
+        res.send({"route":route})
+    })
+    .catch((err)=>console.log(err))
 })
 
 router.post("/reRoute",(req,res)=>{
@@ -23,11 +27,12 @@ router.post("/reRoute",(req,res)=>{
     const source = req.body.source
     const destination = req.body.destination
 
-    obstacles.push(obstacle)
-
-    const route = bestRoute(source,destination)
-
-    res.send({"route":route})
+    Layout.findOneAndUpdate({name:"layout1"},{$push: {obstacles:obstacle}},{new:true})
+    .then((result)=>{
+        const route = bestRoute(source,destination,result.obstacles)
+        res.send({"route":route})
+    })  
+    .catch((err)=>console.log(err))
 })
 
 // router.get("/",(req,res)=>{
