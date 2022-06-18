@@ -35,6 +35,10 @@ router.post("/reRoute",(req,res)=>{
     .catch((err)=>console.log(err))
 })
 
+router.get("/",(req,res)=>{
+    res.send({"helo":"helo"})
+})
+
 // router.get("/",(req,res)=>{
 //     const trip = new Trip({
 //         destination:"warehouse 1",
