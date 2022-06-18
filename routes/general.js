@@ -5,7 +5,7 @@ const Layout = require("../models/layout")
 const bestRoute = require("../functions/bestRoute")
 
 router.get("/nextDestination",(req,res)=>{
-    Trip.findOneAndRemove()
+    Trip.findOne()
     .then((result)=>res.send(result))
     .catch((err)=>console.log(err))
 })
@@ -33,10 +33,6 @@ router.post("/reRoute",(req,res)=>{
         res.send({"route":route})
     })  
     .catch((err)=>console.log(err))
-})
-
-router.get("/",(req,res)=>{
-    res.send({"helo":"helo"})
 })
 
 // router.get("/",(req,res)=>{
