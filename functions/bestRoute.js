@@ -43,12 +43,15 @@ const bestRoute = (source,destination,obstacles) => {
         "rd":"r",
         "ru":"l",
         "rr":"s",
+        "rl":"d",
         "ld":"l",
         "ll":"s",
         "lu":"r",
+        "lr":"d",
         "ur":"r",
         "ul":"l",
-        "uu":"s"
+        "uu":"s",
+        "ud":"d"
     }
 
     let curr_ori = "u"
