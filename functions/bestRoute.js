@@ -70,7 +70,7 @@ const bestRoute = (source,destination,obstacles) => {
             }
         }
 
-        returnable.push(mappings[curr_ori+required_ori])
+        returnable.push([mappings[curr_ori+required_ori],main[i]])
         curr_ori = required_ori
         curr_pos = main[i]
     }
