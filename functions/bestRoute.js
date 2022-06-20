@@ -40,18 +40,18 @@ const bestRoute = (source,destination,obstacles) => {
 
     let returnable = []
     const mappings = {
-        "rd":"r",
-        "ru":"l",
-        "rr":"s",
-        "rl":"d",
-        "ld":"l",
-        "ll":"s",
-        "lu":"r",
-        "lr":"d",
-        "ur":"r",
-        "ul":"l",
-        "uu":"s",
-        "ud":"d"
+        "rd":["r","d"],
+        "ru":["l","s"],
+        "rr":["s","l"],
+        "rl":["d","r"],
+        "ld":["l","d"],
+        "ll":["s","r"],
+        "lu":["r","s"],
+        "lr":["d","l"],
+        "ur":["r","l"],
+        "ul":["l","r"],
+        "uu":["s","s"],
+        "ud":["d","d"]
     }
 
     let curr_ori = "u"
@@ -73,7 +73,7 @@ const bestRoute = (source,destination,obstacles) => {
             }
         }
 
-        returnable.push([mappings[curr_ori+required_ori],main[i],required_ori])
+        returnable.push([mappings[curr_ori+required_ori][0],main[i],mappings[curr_ori+required_ori][1]])
         curr_ori = required_ori
         curr_pos = main[i]
     }
