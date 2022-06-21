@@ -51,7 +51,11 @@ const bestRoute = (source,destination,obstacles) => {
         "ur":["r","l"],
         "ul":["l","r"],
         "uu":["s","s"],
-        "ud":["d","d"]
+        "ud":["d","d"],
+        "du":["d","s"],
+        "dr":["l","l"],
+        "dl":["r","r"],
+        "dd":["s","d"]
     }
 
     let curr_ori = "u"
