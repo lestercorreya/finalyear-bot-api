@@ -77,7 +77,12 @@ const bestRoute = (source,destination,obstacles) => {
             }
         }
 
-        returnable.push([mappings[curr_ori+required_ori][0],main[i],mappings[curr_ori+required_ori][1]])
+        if (mappings[curr_ori+required_ori][0] === "r" || mappings[curr_ori+required_ori][0] === "l" || mappings[curr_ori+required_ori][0] === "d") {
+            returnable.push([mappings[curr_ori+required_ori][0],main[i-1],mappings[curr_ori+required_ori][1]])
+            returnable.push(["s",main[i],mappings[curr_ori+required_ori][1]])
+        } else {
+            returnable.push("s",main[i-1],mappings[curr_ori+required_ori][1])
+        }
         curr_ori = required_ori
         curr_pos = main[i]
     }
